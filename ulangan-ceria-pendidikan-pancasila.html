@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ulangan Ceria Pendidikan Pancasila</title>
+<style>
+:root{--bg:#fff1f1;--ink:#3a1f1f;--card:#fff;--pri:#c8102e;--g:#2fae5a;--y:#ffc93c;--r:#ef5b5b;--o:#3b6fb6;color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1214;--ink:#ffeceb;--card:#3e1d20}}
+:root[data-theme="dark"]{--bg:#2a1214;--ink:#ffeceb;--card:#3e1d20;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Trebuchet MS","Comic Sans MS",system-ui,sans-serif;min-height:100vh;user-select:none;-webkit-user-select:none}
+.screen{display:none;max-width:700px;margin:0 auto;padding:16px}.screen.on{display:block}
+h1{text-align:center;font-size:clamp(25px,6.5vw,38px);margin:8px 0}
+.sub{text-align:center;margin:0 0 14px;opacity:.85}
+.emo{text-align:center;font-size:72px;line-height:1}
+.card{background:var(--card);border-radius:22px;padding:16px;margin-bottom:12px;box-shadow:0 4px 0 #0002}
+.card h3{margin:0 0 10px}
+input{width:100%;font:inherit;font-size:22px;padding:14px;border-radius:16px;border:3px solid var(--pri);background:var(--bg);color:var(--ink);text-align:center}
+.btn{display:block;width:100%;font:inherit;font-size:22px;font-weight:bold;padding:14px;border:0;border-radius:18px;background:var(--y);color:#2b2b2b;cursor:pointer;box-shadow:0 5px 0 #b8941a;margin-top:12px}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #b8941a}
+.btn.alt{background:var(--card);color:var(--ink);border:3px solid var(--ink);box-shadow:0 4px 0 #0003}
+.home{display:inline-block;text-decoration:none;font-weight:bold;font-size:15px;padding:8px 14px;border-radius:999px;background:var(--card);color:var(--ink);border:3px solid var(--ink)}
+.center{text-align:center;margin-bottom:8px}
+.greet{background:var(--pri);color:#fff;border-radius:22px;padding:14px;text-align:center;font-size:clamp(20px,5vw,28px);font-weight:bold;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.chip{font:inherit;font-size:18px;font-weight:bold;padding:14px 6px;border-radius:16px;border:3px solid transparent;background:var(--bg);color:var(--ink);cursor:pointer}
+.chip small{display:block;font-size:12px;font-weight:normal;opacity:.8}
+.chip.sel{border-color:var(--y);background:#ffc93c33}
+.babs{display:grid;gap:8px}
+.bab{font:inherit;font-size:17px;text-align:left;padding:12px 14px;border-radius:14px;border:3px solid var(--pri);background:var(--bg);color:var(--ink);cursor:pointer}
+.bab.all{background:var(--pri);color:#fff}
+.top{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:10px;font-weight:bold}
+.sec{font:inherit;font-size:14px;padding:6px 12px;border-radius:14px;border:3px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer}
+.bar{height:12px;border-radius:8px;background:#0002;overflow:hidden;margin-bottom:12px}
+.bar i{display:block;height:100%;width:0;background:var(--pri);transition:width .3s}
+.qt{font-size:clamp(19px,4.8vw,26px);font-weight:bold;text-align:center;margin:8px 0 14px;line-height:1.4}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;font-size:clamp(16px,4.2vw,21px);font-weight:bold;padding:16px;border-radius:18px;border:0;background:var(--o);color:#fff;cursor:pointer;box-shadow:0 5px 0 #284c80;touch-action:manipulation}
+.opt:active{transform:translateY(4px)}
+.opt.ok{background:var(--g);box-shadow:0 5px 0 #1d7a3c}
+.opt.no{background:var(--r);box-shadow:0 5px 0 #a83a3a;animation:sh .4s}
+.opt:disabled{cursor:default}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.stars{font-size:46px;text-align:center;margin:6px 0}
+.score{text-align:center;font-size:22px;font-weight:bold}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:18px;font-weight:bold;opacity:0;transition:.25s;pointer-events:none;z-index:9;max-width:90vw;text-align:center}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style></head><body>
+
+<section id="s-start" class="screen on">
+  <div class="center"><a class="home" href="https://gtkkotim2026-alt.github.io/Game-Ceria-Hadvhy/">🏠 Kembali ke Menu Utama</a></div>
+  <div class="emo">🦅</div>
+  <h1>Ulangan Ceria Pendidikan Pancasila</h1>
+  <p class="sub">PPKn • Pancasila, UUD 1945, Bhinneka Tunggal Ika, NKRI<br>Kelas 1 sampai 6</p>
+  <div class="card"><h3>Siapa namamu?</h3>
+    <input id="nm" maxlength="20" placeholder="Tulis namamu di sini..." autocomplete="off">
+    <button class="btn" id="go">Masuk ▶</button></div>
+</section>
+
+<section id="s-menu" class="screen">
+  <div class="center"><a class="home" href="https://gtkkotim2026-alt.github.io/Game-Ceria-Hadvhy/">🏠 Kembali ke Menu Utama</a></div>
+  <div class="greet" id="greet"></div>
+  <div class="card"><h3>1. Pilih kelas</h3><div class="grid" id="kelas"></div></div>
+  <div class="card" id="babcard" style="display:none"><h3>2. Pilih BAB ulangan</h3><div class="babs" id="babs"></div></div>
+  <button class="btn alt" id="chg">✏️ Ganti Nama</button>
+</section>
+
+<section id="s-quiz" class="screen">
+  <div class="top"><button class="sec" id="qb">⬅ Pilih BAB</button><span id="qh"></span><button class="sec" id="snd">🔊</button></div>
+  <div class="bar"><i id="pg"></i></div>
+  <div class="score" id="sc"></div>
+  <div class="qt" id="qt"></div>
+  <div style="text-align:center;margin-bottom:10px"><button class="sec" id="rd">🔈 Bacakan soal</button></div>
+  <div class="opts" id="op"></div>
+</section>
+
+<section id="s-res" class="screen">
+  <div class="card">
+    <div class="emo">🏆</div><h1 id="rh"></h1>
+    <div class="stars" id="rs"></div><div class="score" id="rt"></div>
+    <p class="sub" id="rm"></p>
+    <button class="btn" id="again">🔁 Ulangi</button>
+    <button class="btn alt" id="other">📚 Pilih BAB Lain</button>
+    <div class="center" style="margin-top:14px"><a class="home" href="https://gtkkotim2026-alt.github.io/Game-Ceria-Hadvhy/">🏠 Kembali ke Menu Utama</a></div>
+  </div>
+</section>
+<div id="toast"></div>
+
+<script>
+/* ============================================================
+   BANK SOAL — EDIT DI SINI untuk menyesuaikan dengan buku/modul Anda.
+   Format tiap soal: ["pertanyaan","jawaban BENAR","salah 1","salah 2"]
+   Jawaban benar SELALU ditulis di urutan pertama (diacak otomatis saat main).
+   Tiap kelas berisi daftar BAB: ["Judul BAB", [soal, soal, ...]]
+   Fase: A = kelas 1-2, B = kelas 3-4, C = kelas 5-6 (Capaian Pembelajaran Kemendikdasmen).
+   ============================================================ */
+const FASE={1:'A',2:'A',3:'B',4:'B',5:'C',6:'C'};
+const BANK={
+1:[
+ ["Lambang Negara dan Sila Pancasila",[
+  ["Lambang negara Indonesia adalah ...","Garuda Pancasila","Burung Merpati","Bunga Melati"],
+  ["Sila pertama Pancasila berbunyi ...","Ketuhanan Yang Maha Esa","Persatuan Indonesia","Keadilan sosial bagi seluruh rakyat Indonesia"],
+  ["Lambang sila pertama Pancasila adalah ...","bintang","rantai","pohon beringin"],
+  ["Bendera negara Indonesia berwarna ...","merah dan putih","biru dan putih","merah dan kuning"]]],
+ ["Aturan di Rumah dan Sekolah",[
+  ["Aturan di sekolah yang benar adalah ...","datang tepat waktu","membuang sampah sembarangan","bermain saat guru menjelaskan"],
+  ["Kita membuang sampah pada ...","tempat sampah","selokan","halaman tetangga"],
+  ["Sikap yang baik kepada orang tua adalah ...","hormat dan patuh","membantah","berteriak"],
+  ["Jika menerima bantuan dari teman, kita mengucapkan ...","terima kasih","maaf","permisi"]]],
+ ["Mengenal Diri dan Keberagaman",[
+  ["Temanmu berbeda suku dan agama. Sikap kita adalah ...","menghormati dan berteman","menjauhi","mengejek"],
+  ["Lagu kebangsaan negara kita adalah ...","Indonesia Raya","Garuda Pancasila","Halo-Halo Bandung"],
+  ["Saat lagu Indonesia Raya dinyanyikan, kita bersikap ...","berdiri tegak dan hormat","duduk sambil bercanda","berlari-lari"],
+  ["Kita menunjukkan cinta tanah air dengan menjaga ...","kebersihan lingkungan","coretan di dinding","sampah di sungai"]]]],
+2:[
+ ["Sila-sila Pancasila dan Lambangnya",[
+  ["Sila kedua Pancasila berbunyi ...","Kemanusiaan yang adil dan beradab","Persatuan Indonesia","Ketuhanan Yang Maha Esa"],
+  ["Sila ketiga Pancasila berbunyi ...","Persatuan Indonesia","Kemanusiaan yang adil dan beradab","Keadilan sosial bagi seluruh rakyat Indonesia"],
+  ["Lambang sila ketiga Pancasila adalah ...","pohon beringin","kepala banteng","padi dan kapas"],
+  ["Lambang sila keempat Pancasila adalah ...","kepala banteng","rantai","bintang"]]],
+ ["Hak dan Kewajiban",[
+  ["Kewajiban kita sebagai siswa adalah ...","belajar dengan rajin","bermain terus","membolos"],
+  ["Hak anak adalah ...","mendapat pendidikan","bekerja berat","dilarang bermain"],
+  ["Kewajiban anak di rumah adalah ...","membantu orang tua","meminta terus","tidur seharian"],
+  ["Melaksanakan piket kelas adalah contoh ...","kewajiban","hak","hadiah"]]],
+ ["Gotong Royong dan Persatuan",[
+  ["Kerja bakti membersihkan lingkungan disebut ...","gotong royong","tawuran","pesta"],
+  ["Semboyan negara kita adalah ...","Bhinneka Tunggal Ika","Garuda Pancasila","Merah Putih"],
+  ["Bhinneka Tunggal Ika artinya ...","berbeda-beda tetapi tetap satu","semuanya sama","bersatu untuk berperang"],
+  ["Bermain bersama teman dari suku yang berbeda menunjukkan sikap ...","persatuan","permusuhan","kesombongan"]]]],
+3:[
+ ["Pancasila sebagai Dasar Negara",[
+  ["Dasar negara Indonesia adalah ...","Pancasila","Bhinneka Tunggal Ika","Proklamasi"],
+  ["Sila kelima Pancasila berbunyi ...","Keadilan sosial bagi seluruh rakyat Indonesia","Persatuan Indonesia","Ketuhanan Yang Maha Esa"],
+  ["Contoh sikap sesuai sila pertama adalah ...","beribadah sesuai agama masing-masing","memaksakan agama","mengejek teman yang berbeda agama"],
+  ["Contoh sikap sesuai sila kedua adalah ...","menolong teman yang kesusahan","mengejek teman","berkelahi"]]],
+ ["Norma dan Aturan",[
+  ["Aturan yang berlaku di rumah, sekolah, dan masyarakat disebut ...","norma","dongeng","lagu"],
+  ["Norma yang mengatur sopan santun disebut norma ...","kesopanan","hukum","agama"],
+  ["Melanggar aturan lalu lintas dapat ...","membahayakan diri dan orang lain","menyenangkan","tidak berakibat apa-apa"],
+  ["Sikap yang baik terhadap aturan adalah ...","menaati dengan kesadaran sendiri","melanggar bila tidak dilihat","mengabaikannya"]]],
+ ["Hak dan Kewajiban sebagai Warga",[
+  ["Hak adalah ...","sesuatu yang seharusnya kita terima","sesuatu yang harus kita kerjakan","hukuman"],
+  ["Kewajiban adalah ...","sesuatu yang harus kita laksanakan","sesuatu yang boleh ditinggalkan","hadiah"],
+  ["Hak dan kewajiban harus dilaksanakan secara ...","seimbang","sebelah saja","sesukanya"],
+  ["Contoh kewajiban warga sekolah adalah ...","menaati tata tertib","datang kesiangan","membuat gaduh"]]]],
+4:[
+ ["Keberagaman Suku Bangsa dan Budaya",[
+  ["Keberagaman suku bangsa di Indonesia adalah ...","anugerah yang harus dijaga","penyebab perpecahan","hal yang harus dihilangkan"],
+  ["Rumah adat Joglo berasal dari daerah ...","Jawa","Sumatra Barat","Papua"],
+  ["Tarian Kecak berasal dari ...","Bali","Aceh","Papua"],
+  ["Sikap menghargai teman yang berbeda budaya adalah ...","saling menghormati","mengejek","menjauhi"]]],
+ ["Bhinneka Tunggal Ika dan Persatuan",[
+  ["Semboyan Bhinneka Tunggal Ika tertulis pada ...","pita yang dicengkeram Garuda","perisai Garuda","bendera negara"],
+  ["Persatuan dapat terwujud jika kita ...","saling menghargai perbedaan","mementingkan diri sendiri","menyalahkan orang lain"],
+  ["Ikrar para pemuda pada tahun 1928 disebut ...","Sumpah Pemuda","Proklamasi","Hari Pahlawan"],
+  ["Sumpah Pemuda diperingati setiap tanggal ...","28 Oktober","17 Agustus","1 Juni"]]],
+ ["Perumus Pancasila dan Hari Besar Nasional",[
+  ["Tokoh yang menyampaikan pidato lahirnya Pancasila pada 1 Juni 1945 adalah ...","Ir. Soekarno","Mohammad Hatta","Ki Hajar Dewantara"],
+  ["Hari Lahir Pancasila diperingati setiap tanggal ...","1 Juni","1 Oktober","17 Agustus"],
+  ["Teladan para perumus Pancasila adalah ...","bermusyawarah dan mengutamakan kepentingan bangsa","mementingkan diri sendiri","menghindari rapat"],
+  ["Hari Kemerdekaan Indonesia diperingati setiap tanggal ...","17 Agustus","1 Juni","10 November"]]]],
+5:[
+ ["Hubungan Antarsila Pancasila",[
+  ["Sila-sila Pancasila merupakan satu kesatuan yang ...","utuh dan saling berkaitan","terpisah-pisah","saling bertentangan"],
+  ["Sila keempat berbunyi ...","Kerakyatan yang dipimpin oleh hikmat kebijaksanaan dalam permusyawaratan/perwakilan","Persatuan Indonesia","Kemanusiaan yang adil dan beradab"],
+  ["Menyelesaikan masalah dengan bermusyawarah adalah pengamalan sila ke-...","4","1","5"],
+  ["Bersikap adil kepada semua teman adalah pengamalan sila ke-...","5","1","3"]]],
+ ["UUD 1945 serta Hak dan Kewajiban",[
+  ["Pembukaan UUD 1945 terdiri atas ... alinea","empat","dua","tujuh"],
+  ["Rumusan Pancasila tercantum dalam ... UUD 1945","Pembukaan","lampiran","daftar isi"],
+  ["UUD 1945 merupakan ... negara Indonesia","hukum dasar","lagu daerah","lambang"],
+  ["Contoh kewajiban warga negara adalah ...","membayar pajak dan menaati hukum","hanya menerima bantuan","membuang sampah sembarangan"]]],
+ ["Keragaman Budaya dan Persatuan",[
+  ["Cara melestarikan budaya daerah adalah ...","mempelajari dan mencintainya","melupakannya","mengejek budaya lain"],
+  ["Perbedaan pendapat sebaiknya diselesaikan dengan ...","musyawarah","pertengkaran","paksaan"],
+  ["Semboyan Bhinneka Tunggal Ika berasal dari bahasa ...","Jawa Kuno","Arab","Belanda"],
+  ["Sikap toleransi adalah ...","menghargai perbedaan","memaksakan kehendak","menjauhi orang yang berbeda"]]]],
+6:[
+ ["Wilayah NKRI",[
+  ["Wilayah NKRI membentang dari Sabang sampai ...","Merauke","Surabaya","Jayapura"],
+  ["NKRI adalah singkatan dari ...","Negara Kesatuan Republik Indonesia","Negara Kerajaan Republik Indonesia","Negeri Kesatuan Rakyat Indonesia"],
+  ["Indonesia disebut negara kepulauan karena ...","terdiri atas banyak pulau","terdiri atas satu pulau","tidak memiliki laut"],
+  ["Bentuk negara Indonesia adalah ...","kesatuan","serikat","kerajaan"]]],
+ ["Bela Negara dan Cinta Tanah Air",[
+  ["Sikap dan tindakan membela negara disebut ...","bela negara","menyerah","acuh tak acuh"],
+  ["Contoh bela negara bagi pelajar adalah ...","belajar dengan sungguh-sungguh","membolos sekolah","merusak fasilitas umum"],
+  ["Mencintai produk dalam negeri adalah wujud ...","cinta tanah air","kebencian","ketidakpedulian"],
+  ["Mempertahankan keutuhan NKRI berarti ...","menjaga persatuan dan wilayah negara","memisahkan diri","membiarkan perpecahan"]]],
+ ["Pancasila dalam Kehidupan Sehari-hari",[
+  ["Pancasila adalah ... negara Indonesia","dasar dan ideologi","hiasan","lagu daerah"],
+  ["Menghormati perbedaan agama adalah pengamalan sila ke-...","1","4","5"],
+  ["Sebagai warga dunia, kita ikut menciptakan ...","perdamaian","permusuhan","peperangan"],
+  ["Cara sederhana mengamalkan Pancasila di lingkungan adalah ...","bergotong royong dan menjaga kerukunan","bersikap tidak peduli","membeda-bedakan teman"]]]]
+};
+
+const $=id=>document.getElementById(id);
+const shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+const show=id=>document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
+let nama='Ananda',kelas=0,babSel=-2,list=[],qi=0,skor=0,lock=false,sound=true;
+
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1800)}
+function speak(t){if(!sound||!('speechSynthesis' in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.pitch=1.5;u.rate=1;speechSynthesis.speak(u)}catch(e){}}
+let ac;
+function tone(f,t0,d,type='sine',v=.18){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;o.connect(g);g.connect(ac.destination);const s=ac.currentTime+t0;g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.start(s);o.stop(s+d)}catch(e){}}
+function sBenar(){if(!sound)return;tone(659,0,.15,'triangle');tone(880,.12,.15,'triangle');tone(1175,.24,.25,'triangle')}
+function sSalah(){if(!sound)return;tone(220,0,.2,'sawtooth',.12);tone(150,.18,.35,'sawtooth',.12)}
+$('snd').onclick=()=>{sound=!sound;$('snd').textContent=sound?'🔊':'🔇';if(!sound&&'speechSynthesis' in window)speechSynthesis.cancel()};
+const bacaan=t=>t.replace('...','titik titik').replace(/ke-/g,'ke ').replace(/1945/g,'seribu sembilan ratus empat puluh lima');
+
+function masuk(){
+  nama=$('nm').value.trim()||'Ananda';
+  $('greet').textContent=`Assalamu'alaikum, ${nama}! 👋`;
+  show('s-menu');renderKelas();
+  toast(`Assalamu'alaikum, ${nama}!`);
+  speak(`Assalamu'alaikum, ${nama}!`);
+}
+$('go').onclick=masuk;
+$('nm').addEventListener('keydown',e=>{if(e.key==='Enter')masuk()});
+$('chg').onclick=()=>{show('s-start');$('nm').focus()};
+
+function renderKelas(){
+  $('kelas').innerHTML=[1,2,3,4,5,6].map(k=>`<button class="chip ${k===kelas?'sel':''}" data-k="${k}">Kelas ${k}<small>Fase ${FASE[k]}</small></button>`).join('');
+  $('kelas').querySelectorAll('.chip').forEach(b=>b.onclick=()=>{kelas=+b.dataset.k;renderKelas();renderBab()});
+}
+function renderBab(){
+  if(!kelas){$('babcard').style.display='none';return}
+  $('babcard').style.display='block';
+  const bs=BANK[kelas];
+  $('babs').innerHTML=bs.map((b,i)=>`<button class="bab" data-i="${i}">📖 BAB ${i+1}: ${b[0]} <small>(${b[1].length} soal)</small></button>`).join('')
+   +`<button class="bab all" data-i="-1">🌟 Ulangan Semua BAB (${bs.reduce((n,b)=>n+b[1].length,0)} soal)</button>`;
+  $('babs').querySelectorAll('.bab').forEach(b=>b.onclick=()=>mulai(+b.dataset.i));
+  $('babcard').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function mulai(i){
+  babSel=i;const bs=BANK[kelas];
+  const src=i<0?bs.flatMap(b=>b[1]):bs[i][1];
+  list=shuf(src).map(s=>({q:s[0],a:s[1],o:shuf(s.slice(1))}));
+  qi=0;skor=0;
+  $('qh').textContent=`Kelas ${kelas} • ${i<0?'Semua BAB':'BAB '+(i+1)}`;
+  show('s-quiz');tampil();
+}
+function tampil(){
+  lock=false;const q=list[qi];
+  $('pg').style.width=(qi/list.length*100)+'%';
+  $('sc').textContent=`Soal ${qi+1} dari ${list.length}  •  ⭐ ${skor}`;
+  $('qt').textContent=q.q;
+  $('op').innerHTML=q.o.map(o=>`<button class="opt">${o}</button>`).join('');
+  $('op').querySelectorAll('.opt').forEach(b=>b.onclick=()=>jawab(b,q));
+  speak(bacaan(q.q));
+}
+function jawab(btn,q){
+  if(lock)return;lock=true;
+  const ok=btn.textContent===q.a;
+  $('op').querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(b.textContent===q.a)b.classList.add('ok')});
+  let msg;
+  if(ok){skor++;sBenar();msg=`Benar, ${nama}! Hebat!`;toast('✅ '+msg)}
+  else{btn.classList.add('no');sSalah();msg=`Coba lagi ya, ${nama}. Jawabannya ${bacaan(q.a)}`;toast('❌ Jawaban benar: '+q.a)}
+  $('sc').textContent=`Soal ${qi+1} dari ${list.length}  •  ⭐ ${skor}`;
+  setTimeout(()=>speak(msg),ok?350:450);
+  setTimeout(()=>{qi++;qi<list.length?tampil():selesai()},ok?2200:3600);
+}
+function selesai(){
+  const n=list.length,p=skor/n;
+  const bintang=p>=.8?'⭐⭐⭐':p>=.5?'⭐⭐':'⭐';
+  const pesan=p>=.8?'Luar biasa! Kamu sangat pintar!':p>=.5?'Bagus! Belajar sedikit lagi ya!':'Jangan menyerah, ayo belajar dan coba lagi!';
+  $('rh').textContent=`Selesai, ${nama}!`;
+  $('rs').textContent=bintang;
+  $('rt').textContent=`Nilai: ${skor} dari ${n} soal`;
+  $('rm').textContent=pesan;
+  show('s-res');sBenar();
+  setTimeout(()=>speak(`Selesai, ${nama}. Kamu benar ${skor} dari ${n} soal. ${pesan}`),500);
+}
+$('rd').onclick=()=>speak(bacaan(list[qi].q));
+$('again').onclick=()=>mulai(babSel);
+$('other').onclick=()=>{show('s-menu');renderKelas();renderBab()};
+$('qb').onclick=()=>{if('speechSynthesis' in window)speechSynthesis.cancel();show('s-menu');renderKelas();renderBab()};
+</script>
+</body></html>
